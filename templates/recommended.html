@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="recommended_items">
+  <!--recommended_items-->
+  <h2 class="title text-center">recommended items</h2>
+
+  <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+          {% for p in recommended_products %}
+          <div class="item {% if forloop.first %}active{% endif %}">
+              <div class="col-sm-4">
+                  <div class="product-image-wrapper">
+                      <div class="single-products">
+                          <div class="productinfo text-center">
+                              <img src="{{ p.image.url }}" alt="" />
+                              <h2>रु{{ p.price }}</h2>
+                              <p>{{ p.name }}</p>
+                              <a href="#" class="btn btn-default add-to-cart">
+                                  <i class="fa fa-shopping-cart"></i>Add to cart
+                              </a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          {% endfor %}
+      </div>
+      <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+          <i class="fa fa-angle-left"></i>
+      </a>
+      <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+          <i class="fa fa-angle-right"></i>
+      </a>
+  </div>
+</div>
+
+{% endblock body %}
